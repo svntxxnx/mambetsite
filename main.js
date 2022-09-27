@@ -1,7 +1,7 @@
 const questions = [
 	{
 		question: "Сколько раз дрочит Таалай?",
-		answers: ["По 3 раза в день", "Пиздит, что не дрочит, но пипец как дрочит", "Не он ща не дрочит, так как женешка и все такое", "дрочит на", "Все ответы не правильные"],
+		answers: ["По 3 раза в день", "Пиздит, что не дрочит, но пипец как дрочит", "Не он ща не дрочит, так как женешка и все такое", "дрочит на фотки самого себя", "Он не дрочит и вообще, ал уже жаш бала эмес"],
 		correct: 1,
 	},
 	{
@@ -34,8 +34,6 @@ const questions = [
 let header = document.querySelector('#header'), ulList = document.querySelector('#list'), submitBtn = document.querySelector('#submit'), mainBtn = document.querySelector('.main__btn'), mainForm = document.querySelector('.main__form'), quiz = document.querySelector('#quiz')  ,score = 0, questionIndex = 0;
 clearPage()
 showQuestion()
-
-console.log(quiz)
 
 
 mainBtn.addEventListener('click', hiddenToggle) 
@@ -82,10 +80,8 @@ function checkAnswer() {
 		return 
 	}	
 	const intInputChecked = parseInt(inputChecked.value)
-	console.log(intInputChecked, questions[questionIndex]['correct'])
 	if(intInputChecked === questions[questionIndex]['correct']) {
 		score++
-		console.log(score)
 	}
 	if (questionIndex !== questions.length - 1) {
 		 questionIndex++
@@ -98,16 +94,17 @@ function checkAnswer() {
 }
 
 function showResults() {
-	if (score === questions.length){header.textContent = `Поздровляю! Вы ответили на все вопросы правильно! Вопросов было ${questions.length}` } else if ((score * 100) / questions.length > 70) {
+	if (score === questions.length){
 		header.textContent = `Чел, да ты просто https://www.youtube.com/shorts/OceUlCP292E `
-	}else if ((score * 100) / questions.length > 50) {
-		header.textContent = `Боже чел, какой же ты попуск, не ответил больше чем на половину вопросов. Чистый Мамбет`
+	}else if ((score * 100) / questions.length > 30) {
+		header.textContent = `Боже чел, какой же ты попуск, не ответил даже на половину вопросов. Чистый Мамбет`
 	}else {
-		header.textContent = `Э, а КАК РУЛИТЬ?!!!!`
+		header.textContent = `Э , как РУЛИТЬ?! `
 	}
-	
 
 	submitBtn.textContent = 'Начать заново'
-	submitBtn.onclick = () => history.go()
-
+	submitBtn.onclick = () => {
+		history.go()
+	}
+	
 }
